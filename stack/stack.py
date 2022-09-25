@@ -1,4 +1,7 @@
 class Stack:
+    __storage = None
+    __stack_size = None
+
     def __init__(self):
         self.storage = []
         self.stack_size = -1
