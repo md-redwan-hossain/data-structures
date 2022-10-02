@@ -24,7 +24,7 @@ class Queue:
         else:
             return True
 
-    def peak(self):
+    def peek(self):
         if self.queue_size() != 0:
             return self.front.data
 
@@ -96,4 +96,4 @@ class Queue:
 
 #     elif choice == 6:
 #         if line_one.queue_size() != 0:
-#             print(line_one.peak())
+#             print(line_one.peek())
