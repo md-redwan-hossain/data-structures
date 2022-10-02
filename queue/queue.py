@@ -33,6 +33,7 @@ class Queue:
         self.size += 1
         if self.front:
             temp = self.rear
+            self.rear = new_node
             temp.after = new_node
         else:
             self.front = self.rear = new_node
