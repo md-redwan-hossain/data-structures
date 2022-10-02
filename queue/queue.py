@@ -67,7 +67,7 @@ class Queue:
 # 3.  Check empty or not
 # 4.  Enqueue
 # 5.  Deque
-# 6.  Peak
+# 6.  Peek
 # """)
 
 # while True:
