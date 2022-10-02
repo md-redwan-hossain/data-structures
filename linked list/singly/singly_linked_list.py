@@ -125,83 +125,82 @@ class LinkedList:
             self.empty_msg()
 
 
-# Data insert segment:
-# Remove the triple quotes(block comment) to use this segment:
+# # Data insert segment:
+# # Remove the comments to use this segment:
 
 
-def inp():
-    # change data type here on demand
-    in_data = int(input("Enter data: "))
-    return in_data
+# def inp():
+#     # change data type here on demand
+#     in_data = int(input("Enter data: "))
+#     return in_data
 
 
-def inp_target():
-    # change data type here on demand
-    in_target = int(input("Enter target location: "))
-    in_data = int(input("Enter data: "))
-    return in_target, in_data
+# def inp_target():
+#     # change data type here on demand
+#     in_target = int(input("Enter target location: "))
+#     in_data = int(input("Enter data: "))
+#     return in_target, in_data
 
 
-list_one = LinkedList()
+# list_one = LinkedList()
 
-print("""
-0. Stop input
-1. Print singly linked list
-2. List size
-3. Mid of linked list
-4. Insert at head
-5. Insert at tail
-6. Insert before position
-7. Insert after position
-8. Delete at head
-9. Delete at tail
-""")
+# print("""
+# 0. Stop input
+# 1. Print singly linked list
+# 2. List size
+# 3. Mid of linked list
+# 4. Insert at head
+# 5. Insert at tail
+# 6. Insert before position
+# 7. Insert after position
+# 8. Delete at head
+# 9. Delete at tail
+# """)
 
-while True:
-    choice = int(input("Enter your choice: "))
-    if choice == 0:
-        break
+# while True:
+#     choice = int(input("Enter your choice: "))
+#     if choice == 0:
+#         break
 
-    elif choice == 1:
-        list_one.print_list()
+#     elif choice == 1:
+#         list_one.print_list()
 
-    elif choice == 2:
-        print(list_one.list_size())
+#     elif choice == 2:
+#         print(list_one.list_size())
 
-    elif choice == 3:
-        print(list_one.mid_of_list())
+#     elif choice == 3:
+#         print(list_one.mid_of_list())
 
-    elif choice == 4:
-        input_data = inp()
-        list_one.insert_at_head(input_data)
+#     elif choice == 4:
+#         input_data = inp()
+#         list_one.insert_at_head(input_data)
 
-    elif choice == 5:
-        input_data = inp()
-        list_one.insert_at_tail(input_data)
+#     elif choice == 5:
+#         input_data = inp()
+#         list_one.insert_at_tail(input_data)
 
-    elif choice == 6:
-        verify = list_one.list_size()
-        if verify != 0:
-            print(f"You have {verify} nodes.")
-            input_data_and_target = inp_target()
-            list_one.insert_before_position(
-                input_data_and_target[0], input_data_and_target[1])
-        else:
-            list_one.empty_msg()
+#     elif choice == 6:
+#         verify = list_one.list_size()
+#         if verify != 0:
+#             print(f"You have {verify} nodes.")
+#             input_data_and_target = inp_target()
+#             list_one.insert_before_position(
+#                 input_data_and_target[0], input_data_and_target[1])
+#         else:
+#             list_one.empty_msg()
 
-    elif choice == 7:
-        verify = list_one.list_size()
-        if verify != 0:
-            print(f"You have {verify} nodes.")
-            input_data_and_target = inp_target()
-            list_one.insert_after_position(
-                input_data_and_target[0], input_data_and_target[1])
-        else:
-            list_one.empty_msg()
+#     elif choice == 7:
+#         verify = list_one.list_size()
+#         if verify != 0:
+#             print(f"You have {verify} nodes.")
+#             input_data_and_target = inp_target()
+#             list_one.insert_after_position(
+#                 input_data_and_target[0], input_data_and_target[1])
+#         else:
+#             list_one.empty_msg()
 
-    elif choice == 8:
-        list_one.delete_at_head()
+#     elif choice == 8:
+#         list_one.delete_at_head()
 
-    elif choice == 9:
-        list_one.delete_at_tail()
-
+#     elif choice == 9:
+#         list_one.delete_at_tail()
