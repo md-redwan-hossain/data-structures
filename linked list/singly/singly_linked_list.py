@@ -10,7 +10,8 @@ class LinkedList:
         self.head = None
         self.size = 0
 
-    def empty_msg(self):
+    @staticmethod
+    def empty_msg():
         print("list is empty")
 
     def plus_size(self):
@@ -23,15 +24,20 @@ class LinkedList:
         return self.size
 
     def insert_at_head(self, data):
-        new_node = Node(data)
-        temp = self.head
-        self.head = new_node
-        new_node.after = temp
-        self.plus_size()
+        if self.head is None:
+            new_node = Node(data)
+            self.head = new_node
+            self.plus_size()
+        else:
+            new_node = Node(data)
+            temp = self.head
+            self.head = new_node
+            new_node.after = temp
+            self.plus_size()
 
     def insert_at_tail(self, data):
         new_node = Node(data)
-        if self.head:
+        if self.head is not None:
             self.plus_size()
             temp = self.head
             while temp.after:
@@ -41,10 +47,10 @@ class LinkedList:
             self.insert_at_head(data)
 
     def insert_before_position(self, target_position, data):
-        if self.head and not self.head.after:
+        if target_position in (0, 1) or None in (self.head, self.head.after):
             self.insert_at_head(data)
 
-        elif self.head and self.head.after:
+        elif None not in (self.head, self.head.after):
             new_node = Node(data)
             if target_position <= self.list_size():
                 target_position -= 1
@@ -60,11 +66,9 @@ class LinkedList:
                 temp.after = new_node
                 new_node.after = saved
                 self.plus_size()
-        else:
-            self.empty_msg()
 
     def insert_after_position(self, target_position, data):
-        if self.head:
+        if self.head is not None:
             new_node = Node(data)
             if target_position <= self.list_size():
                 destination = 0
@@ -80,35 +84,36 @@ class LinkedList:
                 new_node.after = saved
                 self.plus_size()
         else:
-            self.empty_msg()
+            self.insert_at_head(data)
 
     def delete_at_head(self):
-        if self.head:
-            delete_node = self.head
-            self.head = self.head.after
-            del delete_node
+        if self.head is not None:
+            temp = self.head
+            self.head = temp.after
+            temp = None
             self.minus_size()
         else:
             self.empty_msg()
 
     def delete_at_tail(self):
-        if self.head.after:
-            temp = self.head
-            while temp.after.after:
-                temp = temp.after
-            delete_node = temp.after
-            del delete_node
-            temp.after = None
-            self.minus_size()
-        elif self.head:
-            self.delete_at_head()
-        else:
+        if self.head is None:
             self.empty_msg()
 
+        elif self.head.after is None:
+            self.delete_at_head()
+
+        elif self.head.after is not None:
+            temp = self.head
+            while temp.after.after is not None:
+                temp = temp.after
+
+            temp.after = None
+            self.minus_size()
+
     def mid_of_list(self):
-        if self.head:
-            slow, fast = self.head, self.head
-            while (fast and fast.after):
+        if self.head is not None:
+            slow = fast = self.head
+            while None not in (fast, fast.after):
                 fast = fast.after.after
                 slow = slow.after
             return slow.data
@@ -118,15 +123,15 @@ class LinkedList:
     def print_list(self):
         if self.head:
             temp = self.head
-            while temp:
+            while temp is not None:
                 print(temp.data)
                 temp = temp.after
         else:
             self.empty_msg()
 
 
-# # Data insert segment:
-# # Remove the comments to use this segment:
+# Data insert segment:
+# Remove the triple quotes(block comment) to use this segment:
 
 
 # def inp():
@@ -144,7 +149,8 @@ class LinkedList:
 
 # list_one = LinkedList()
 
-# print("""
+# print(
+#     """
 # 0. Stop input
 # 1. Print singly linked list
 # 2. List size
@@ -155,7 +161,8 @@ class LinkedList:
 # 7. Insert after position
 # 8. Delete at head
 # 9. Delete at tail
-# """)
+# """
+# )
 
 # while True:
 #     choice = int(input("Enter your choice: "))
@@ -185,7 +192,8 @@ class LinkedList:
 #             print(f"You have {verify} nodes.")
 #             input_data_and_target = inp_target()
 #             list_one.insert_before_position(
-#                 input_data_and_target[0], input_data_and_target[1])
+#                 input_data_and_target[0], input_data_and_target[1]
+#             )
 #         else:
 #             list_one.empty_msg()
 
@@ -195,7 +203,8 @@ class LinkedList:
 #             print(f"You have {verify} nodes.")
 #             input_data_and_target = inp_target()
 #             list_one.insert_after_position(
-#                 input_data_and_target[0], input_data_and_target[1])
+#                 input_data_and_target[0], input_data_and_target[1]
+#             )
 #         else:
 #             list_one.empty_msg()
 

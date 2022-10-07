@@ -1,4 +1,4 @@
-# Singly linked list skeleton segment:
+# Queue skeleton segment:
 class Node:
     def __init__(self, data=None, after=None):
         self.data = data
@@ -24,7 +24,7 @@ class Queue:
         else:
             return True
 
-    def peek(self):
+    def peak(self):
         if self.queue_size() != 0:
             return self.front.data
 
@@ -32,18 +32,19 @@ class Queue:
         new_node = Node(data)
         self.size += 1
         if self.front:
-            temp = self.rear
-            self.rear = new_node
-            temp.after = new_node
+            self.rear.after = new_node
+            self.rear = self.rear.after
         else:
             self.front = self.rear = new_node
 
     def dequeue(self):
-        if self.front:
-            delete_node = self.front
-            saved_data = delete_node.data
+        if self.front is not None:
+            temp = self.front
+            saved_data = temp.data
             self.front = self.front.after
-            del delete_node
+            temp = None
+            if self.front is None:
+                self.rear = None
             self.size -= 1
             return saved_data
         else:
@@ -54,47 +55,49 @@ class Queue:
 # Remove the comments to use this segment:
 
 
-# def inp():
-#     # change data type here on demand
-#     in_data = int(input("Enter data: "))
-#     return in_data
+def inp():
+    # change data type here on demand
+    in_data = int(input("Enter data: "))
+    return in_data
 
 
-# line_one = Queue()
+line_one = Queue()
 
-# print("""
-# 0.  Stop input
-# 2.  Queue size
-# 3.  Check empty or not
-# 4.  Enqueue
-# 5.  Deque
-# 6.  Peek
-# """)
+print(
+    """
+0.  Stop input
+2.  Queue size
+3.  Check empty or not
+4.  Enqueue
+5.  Deque
+6.  Peak
+"""
+)
 
-# while True:
-#     choice = int(input("Enter your choice: "))
-#     if choice == 0:
-#         break
+while True:
+    choice = int(input("Enter your choice: "))
+    if choice == 0:
+        break
 
-#     elif choice == 2:
-#         print(line_one.queue_size())
+    elif choice == 2:
+        print(line_one.queue_size())
 
-#     elif choice == 3:
-#         if not line_one.is_empty():
-#             print("Queue is not empty")
-#         else:
-#             print("Queue is empty")
+    elif choice == 3:
+        if not line_one.is_empty():
+            print("Queue is not empty")
+        else:
+            print("Queue is empty")
 
-#     elif choice == 4:
-#         input_data = inp()
-#         line_one.enqueue(input_data)
+    elif choice == 4:
+        input_data = inp()
+        line_one.enqueue(input_data)
 
-#     elif choice == 5:
-#         if line_one.queue_size() != 0:
-#             print(line_one.dequeue())
-#         else:
-#             line_one.underflow_msg()
+    elif choice == 5:
+        if line_one.queue_size() != 0:
+            print(line_one.dequeue())
+        else:
+            line_one.underflow_msg()
 
-#     elif choice == 6:
-#         if line_one.queue_size() != 0:
-#             print(line_one.peek())
+    elif choice == 6:
+        if line_one.queue_size() != 0:
+            print(line_one.peak())
