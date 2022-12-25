@@ -7,7 +7,6 @@ class Node:
 
 class LinkedList:
     def __init__(self):
-        self.enable_reverse_iteration = False
         self.head = None
         self.tail = None
         self.size = 0
@@ -77,29 +76,16 @@ class LinkedList:
         return popped_data
 
     def __iter__(self):
-        if self.enable_reverse_iteration:
-            self.current = self.tail
-
-        else:
-            self.current = self.head
+        self.current = self.head
         return self
 
     def __next__(self):
         if self.current is None:
-            self.enable_reverse_iteration = False
             raise StopIteration
 
         current_data = self.current.data
-        if self.enable_reverse_iteration:
-
-            self.current = self.current.before
-        else:
-            self.current = self.current.after
+        self.current = self.current.after
         return current_data
-
-    def __reverse__(self):
-        self.enable_reverse_iteration = True
-        return self
 
     def __getitem__(self, index):
         if index < 0 or index >= self.size:
