@@ -116,5 +116,5 @@ class LinkedList:
 """
 built-in len() function can be used to see linked list length.
 built-in reversed() function can be used to iterate the linked list in the reverse direction.
-linked list elements can be accessed as like list index with [] syntax.
+linked list elements can be accessed as like list index with [] syntax, time complexity O(n).
 """
