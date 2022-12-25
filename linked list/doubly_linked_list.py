@@ -7,12 +7,12 @@ class Node:
 
 class LinkedList:
     def __init__(self):
+        self.reverse = False
         self.head = None
         self.tail = None
         self.size = 0
-        self.reverse = False
 
-    def list_size(self):
+    def __len__(self):
         return self.size
 
     def prepend(self, data):
@@ -109,3 +109,4 @@ demo_doubly_linked_list.reverse = True
     print(item)
 
 """
+
